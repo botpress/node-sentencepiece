@@ -1,6 +1,6 @@
 {
     "targets": [{
-        "target_name": "token",
+        "target_name": "sentencepiece",
         "cflags!": [ "-fno-exceptions" ],
         "cflags_cc!": [ "-fno-exceptions" ],
         "sources": [
