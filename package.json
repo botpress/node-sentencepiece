@@ -1,7 +1,7 @@
 {
-  "name": "sentencepiece-node-addon",
+  "name": "sentencepiece",
   "version": "1.0.0",
-  "description": "addon for sentencepiece",
+  "description": "nodejs addon for sentencepiece",
   "main": "index.js",
   "author": "",
   "license": "MIT",
