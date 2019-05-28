@@ -1,10 +1,6 @@
 echo 'starting to build sentencepiece repo for Linux...'
 
 cd ./sentencepiece
-pwd
-
-echo 'pulling changes...'
-git pull
 
 dir=build
 if [ ! -e $dir ]
