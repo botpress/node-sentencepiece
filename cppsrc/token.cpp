@@ -2,35 +2,18 @@
 
 using namespace std;
 
-class LoadModelTokenException : public exception
-{
-    public:
-    LoadModelTokenException(string modelFilePath) {
-        errorMessage = string("Model for tokenization could not be loaded : ").append(modelFilePath);
-    }
-
-	const char * what () const throw ()
-    {
-    	return errorMessage.c_str();
-    }
-
-    private:
-    string errorMessage;
-};
-
-vector<string> token::encode(string pathToModel, string input_string) {
+tuple<vector<string>, string> token::encode(string pathToModel, string input_string) {
     
     sentencepiece::SentencePieceProcessor processor;
     const auto status = processor.Load(pathToModel);
 
     if (!status.ok()) {
-        throw LoadModelTokenException(pathToModel);
+        return make_tuple(vector<string>(), string("Model for tokenization could not be loaded : ").append(pathToModel));
     }
 
     std::vector<std::string> pieces;
     processor.Encode(input_string, &pieces);
-
-    return pieces;
+    return make_tuple(pieces, "");
 }
 
 Napi::Array token::EncodeWrapped(const Napi::CallbackInfo& info) {
@@ -44,11 +27,12 @@ Napi::Array token::EncodeWrapped(const Napi::CallbackInfo& info) {
     Napi::String pathToModel = info[0].As<Napi::String>();
     Napi::String inputString = info[1].As<Napi::String>();
 
-    vector<string> pieces;
-    try {
-        pieces = token::encode(pathToModel.Utf8Value(), inputString.Utf8Value());
-    } catch (LoadModelTokenException& e) {
-        Napi::Error::New(env, e.what()).ThrowAsJavaScriptException();
+    tuple<vector<string>, string> returnedTuple = token::encode(pathToModel.Utf8Value(), inputString.Utf8Value());
+    vector<string> pieces = get<0>(returnedTuple);
+    string errorMessage = get<1>(returnedTuple);
+    
+    if (errorMessage.length() != 0) {
+        Napi::Error::New(env, errorMessage.c_str()).ThrowAsJavaScriptException();
     }
 
     Napi::Array napiPieces = Napi::Array::New(env);
