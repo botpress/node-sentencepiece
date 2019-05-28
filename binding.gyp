@@ -11,7 +11,7 @@
             "<!@(node -p \"require('node-addon-api').include\")",
             "<(module_root_dir)/sentencepiece/src"
         ],
-        'libraries': ["<(module_root_dir)/bin/sentencepiece_lib"],
+        'libraries': ["<(module_root_dir)/bin/sentencepiece_lib.lib"],
         'dependencies': [
             "<!(node -p \"require('node-addon-api').gyp\")"
         ],

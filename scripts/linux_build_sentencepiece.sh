@@ -22,4 +22,17 @@ sudo make install
 
 sudo ldconfig -v
 
-echo 'finished building sentencepiece repo...'
+bin_dir=bin
+echo 'finished building sentencepiece repo. Copying library to bin directory...'
+cd ../../
+
+if [ ! -e $bin_dir ]
+then
+    echo "creating $bin_dir directory"
+    mkdir $bin_dir
+else
+    echo "$bin_dir directory already exists"
+fi
+cp ./sentencepiece/build/src/libsentencepiece.a ./$bin_dir/sentencepiece_lib.lib
+
+echo 'done.'
