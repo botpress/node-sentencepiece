@@ -7,13 +7,17 @@
   "license": "MIT",
   "gypfile": true,
   "scripts": {
-    "build": "node-gyp rebuild",
+    "build": "run-script-os",
+    "build:linux": "./scripts/linux_build_sentencepiece.sh && node-gyp rebuild",
+    "build:darwin": "./scripts/macos_build_sentencepiece.sh && node-gyp rebuild",
+    "build:win32": "echo 'windows build'",
     "clean": "node-gyp clean"
   },
   "devDependencies": {
     "node-gyp": "^4.0.0"
   },
   "dependencies": {
-    "node-addon-api": "^1.6.3"
+    "node-addon-api": "^1.6.3",
+    "run-script-os": "^1.0.5"
   }
 }

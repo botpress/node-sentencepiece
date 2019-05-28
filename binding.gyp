@@ -9,9 +9,9 @@
         ],
         'include_dirs': [
             "<!@(node -p \"require('node-addon-api').include\")",
-            "<(module_root_dir)/sentencepiece/"
+            "<(module_root_dir)/sentencepiece/src"
         ],
-        'libraries': ["<(module_root_dir)/sentencepiece/libsentencepiece.a"],
+        'libraries': ["<(module_root_dir)/sentencepiece/build/src/libsentencepiece.a"],
         'dependencies': [
             "<!(node -p \"require('node-addon-api').gyp\")"
         ],
