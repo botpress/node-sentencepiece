@@ -10,7 +10,7 @@
     "build": "run-script-os",
     "build:linux": "./scripts/linux_build_sentencepiece.sh && node-gyp rebuild",
     "build:darwin": "./scripts/macos_build_sentencepiece.sh && node-gyp rebuild",
-    "build:win32": "echo 'windows build'",
+    "build:win32": ".\\scripts\\win_build_sentencepiece.bat ; if($?) node-gyp rebuild",
     "clean": "node-gyp clean"
   },
   "devDependencies": {
