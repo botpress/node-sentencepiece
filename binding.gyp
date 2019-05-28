@@ -3,6 +3,8 @@
         "target_name": "sentencepiece",
         "cflags!": [ "-fno-exceptions" ],
         "cflags_cc!": [ "-fno-exceptions" ],
+        "cflags": ["-fexceptions"],
+        "cflags_cc": ["-fexceptions"],
         "sources": [
             "cppsrc/main.cpp",
             "cppsrc/token.cpp"

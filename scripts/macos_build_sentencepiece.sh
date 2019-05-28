@@ -14,9 +14,9 @@ fi
 cd $dir
 cmake ..
 make -j $(nproc)
-sudo make install
+make install
 
-sudo update_dyld_shared_cache
+update_dyld_shared_cache
 
 bin_dir=bin
 echo 'finished building sentencepiece repo. Copying library to bin directory...'
