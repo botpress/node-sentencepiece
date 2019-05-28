@@ -12,15 +12,9 @@ const mapLanguageToModel = (language) => {
     return modelFilePath
 }
 
-const cleanTokens = (tokens) => {
-    let tokenSentence = tokens.reduce((ac, cu) => ac + cu, "")
-    return tokenSentence.split('▁').filter(x => x)
-}
-
 const wrappedEncode = (language, inputText) => {
     const modelFilePath = mapLanguageToModel(language)
-    const dirtyTokens = sentencepiece.encode(modelFilePath, inputText)
-    return cleanTokens(dirtyTokens)
+    return sentencepiece.encode(modelFilePath, inputText)
 }
 
 const sentencepieceWrapper = {
