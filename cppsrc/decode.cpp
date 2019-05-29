@@ -17,7 +17,8 @@ DecodeInfo decode::decode(string pathToModel, vector<string> pieces) {
     string reconstructedText;
     processor.Decode(pieces, &reconstructedText);
 
-    returnedObject = { .reconstructedText = reconstructedText, .errorMessage = "" };
+    returnedObject.reconstructedText = reconstructedText;
+    returnedObject.errorMessage = "";
     return returnedObject;
 }
 

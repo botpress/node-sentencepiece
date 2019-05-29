@@ -18,7 +18,8 @@ EncodeInfo encode::encode(string pathToModel, string input_string) {
     std::vector<std::string> pieces;
     processor.Encode(input_string, &pieces);
 
-    returnedObject = { .pieces = pieces, .errorMessage = "" };
+    returnedObject.pieces = pieces;
+    returnedObject.errorMessage = "";
     return returnedObject;
 }
 
