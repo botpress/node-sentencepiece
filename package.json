@@ -1,5 +1,5 @@
 {
-  "name": "sentencepiece",
+  "name": "node-sentencepiece",
   "version": "1.0.0",
   "description": "nodejs addon for sentencepiece",
   "main": "index.js",
