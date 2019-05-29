@@ -1,8 +1,10 @@
 #include <napi.h>
-#include "token.h"
+#include "encode.h"
+#include "decode.h"
 
 Napi::Object InitAll(Napi::Env env, Napi::Object exports) {
-  token::Init(env, exports);
+  encode::Init(env, exports);
+  decode::Init(env, exports);
   return exports;
 }
 
