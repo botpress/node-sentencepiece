@@ -11,6 +11,7 @@
     "build:linux": "./scripts/linux_build_sentencepiece.sh && node-gyp rebuild",
     "build:darwin": "./scripts/macos_build_sentencepiece.sh && node-gyp rebuild",
     "build:win32": "(.\\scripts\\win_build_sentencepiece.bat || true) && node-gyp rebuild",
+    "install": "echo requirements installed with succes, now run yarn build",
     "clean": "node-gyp clean"
   },
   "devDependencies": {
