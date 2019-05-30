@@ -12,8 +12,12 @@ note : windows users also need [Build Tools for Visual Studio package](https://v
     `>> node`
 1. require node-sentencepiece package  
     `(node) var sp = require('./node-sentencepiece')`
-1. use the package to get tokens (default language is english)  
-    `(node) sp.encode('Never gonna give you up, Never gonna let you down')`
+1. instanciate a processor  
+    `(node) var proc = new sp.Processor()`
+1. load a model  
+    `(node) proc.loadModel('/path/to/model/m.model')`
+1. use the processor to get tokens
+    `(node) proc.encode('Never gonna give you up, Never gonna let you down')`
         
     returns:  
     `[ 'Never',
@@ -26,17 +30,18 @@ note : windows users also need [Build Tools for Visual Studio package](https://v
     'let',
     'you',
     'down' ]`
-1. to tokenize in another language you can pass the path of your own custom model  
-    `(node) sp.encode('Never gonna give you up, Never gonna let you down', '/path/to/model/m.model')`
 
-1. you can get back the original input text from token by using decode with the same model  
-    `(node) var modelPath = '/path/to/model/m.model'` 
+1. you can get back the original input text from token by using the decode method  
 
-    `(node) var inputText = 'Never gonna give you up, Never gonna let you down'`  
+    `(node) var inputText = 'Feel the rain on your skin No one else can feel it for you'`  
+
+    `(node) var proc = new sp.Processor()`  
+
+    `(node) proc.loadModel('/path/to/model/m.model')`
          
-    `(node) var pieces = sp.encode(inputText, modelPath)` 
+    `(node) var pieces = proc.encode(inputText)` 
         
-    `(node) var outputText = sp.decode(pieces, modelPath)`
+    `(node) var outputText = proc.decode(pieces, modelPath)`
 
     `(node) inputText === outpuText`
 
