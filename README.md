@@ -20,16 +20,21 @@ note : windows users also need [Build Tools for Visual Studio package](https://v
     `(node) proc.encode('Never gonna give you up, Never gonna let you down')`
         
     returns:  
-    `[ 'Never',
-    'gonna',
-    'give',
-    'you',
-    'up,',
-    'Never',
-    'gonna',
-    'let',
-    'you',
-    'down' ]`
+    `[ '▁',
+        'N',
+        'ever',
+        '▁gonna',
+        '▁give',
+        '▁you',
+        '▁up',
+        ',',
+        '▁',
+        'N',
+        'ever',
+        '▁gonna',
+        '▁let',
+        '▁you',
+        '▁down' ]`
 
 1. you can get back the original input text from token by using the decode method  
 
